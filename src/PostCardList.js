@@ -6,7 +6,7 @@ export default function PostCardList() {
   return (
     <>
       {posts.map((post) => (
-        <PostCard post={post} />
+        <PostCard post={post} key={post.id} />
       ))}
     </>
   );

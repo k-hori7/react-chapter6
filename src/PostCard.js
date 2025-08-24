@@ -1,25 +1,25 @@
-import { posts } from "./data/post";
+import styles from "./PostCard.module.css";
 
 export default function PostCard({ post }) {
   return (
-    <>
-      <div className="post-card">
-        <div className="post-info">
-          <div className="post-date">
-            {new Date(post.createdAt).toLocaleDateString("ja-JP")}
-          </div>
-          <div className="post-category">
-            {post.categories.map((category) => (
-              <div className="post-tag">{category}</div>
-            ))}
-          </div>
+    <div className={styles.postCard}>
+      <div className={styles.postInfo}>
+        <div className={styles.postDate}>
+          {new Date(post.createdAt).toLocaleDateString("ja-JP")}
         </div>
-        <p className="post-title">APIで取得した{post.title}</p>
-        <div
-          className="post-content preview"
-          dangerouslySetInnerHTML={{ __html: post.content }}
-        ></div>
+        <div className={styles.postCategory}>
+          {post.categories.map((category, index) => (
+            <div key={index} className={styles.postTag}>
+              {category}
+            </div>
+          ))}
+        </div>
       </div>
-    </>
+      <p className={styles.postTitle}>APIで取得した{post.title}</p>
+      <div
+        className={`${styles.postContent} ${styles.preview}`}
+        dangerouslySetInnerHTML={{ __html: post.content }}
+      ></div>
+    </div>
   );
 }

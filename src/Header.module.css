@@ -7,3 +7,7 @@ header {
   justify-content: space-between;
   padding: 24px;
 }
+a {
+  color: inherit; /* 親要素の文字色を引き継ぐ */
+  text-decoration: none;
+}

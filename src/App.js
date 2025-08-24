@@ -1,14 +1,13 @@
-import "./App.css";
 import Header from "./Header";
-import "./Header.css";
+import "./App.css";
 import CardList from "./PostCardList";
-import "./PostCard.css";
+import styles from "./Home.module.css";
 
 function App() {
   return (
     <>
       <Header />
-      <div className="home-container">
+      <div className={styles.homeContainer}>
         <CardList />
       </div>
     </>
