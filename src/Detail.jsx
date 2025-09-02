@@ -7,6 +7,10 @@ export default function Detail() {
   //idを元にpostを取得
   const post = posts.find((p) => p.id === Number(id));
 
+  if (!post) {
+    return <p>記事が見つかりませんでした</p>; // 投稿が見つからない場合の表示
+  }
+
   return (
     <>
       <div className={styles.detailContainer}>

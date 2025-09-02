@@ -3,7 +3,7 @@ import styles from "./PostCard.module.css";
 
 export default function PostCard({ post }) {
   return (
-    <Link to={`/detail/${post.id}`}>
+    <Link to={`/posts/${post.id}`}>
       <div className={styles.postCard}>
         <div className={styles.postInfo}>
           <div className={styles.postDate}>
