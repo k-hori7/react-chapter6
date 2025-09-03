@@ -1,15 +1,15 @@
 import Header from "./Header";
 import "./App.css";
-import CardList from "./PostCardList";
-import styles from "./Home.module.css";
+import { BrowserRouter } from "react-router-dom";
+import AppRoutes from "./AppRoutes";
 
 function App() {
   return (
     <>
-      <Header />
-      <div className={styles.homeContainer}>
-        <CardList />
-      </div>
+      <BrowserRouter>
+        <Header />
+        <AppRoutes />
+      </BrowserRouter>
     </>
   );
 }
