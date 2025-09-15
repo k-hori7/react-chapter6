@@ -1,8 +1,9 @@
 import PostCard from "./PostCard";
 import React from "react";
-import { posts } from "./data/post";
+import { usePosts } from "./data/post";
 
 export default function PostCardList() {
+  const posts = usePosts();
   return (
     <>
       {posts.map((post) => (
