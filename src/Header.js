@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className={style.header}>
       <Link to={`/`}>Blog</Link>
-      <a href="https://example.com">お問い合わせ</a>
+      <Link to={`/contact`}>お問い合わせ</Link>
     </header>
   );
 }
