@@ -1,11 +1,16 @@
 import { useParams } from "react-router-dom";
-import { posts } from "./data/post";
+import { usePost } from "./data/usePost";
 import styles from "./Detail.module.css";
 
 export default function Detail() {
   const { id } = useParams(); //URLのパラメータからid取得
+
   //idを元にpostを取得
-  const post = posts.find((p) => p.id === Number(id));
+  const { post, isLoading, error } = usePost(id);
+
+  if (isLoading) {
+    return <p>読み込み中....</p>;
+  }
 
   if (!post) {
     return <p>記事が見つかりませんでした</p>; // 投稿が見つからない場合の表示
