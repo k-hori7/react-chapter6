@@ -13,6 +13,7 @@ export default function Detail() {
   }
 
   if (!post) {
+    console.log(error);
     return <p>記事が見つかりませんでした</p>; // 投稿が見つからない場合の表示
   }
 

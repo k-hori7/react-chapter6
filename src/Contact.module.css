@@ -70,3 +70,10 @@ textarea {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
   border: none;
 }
+
+.error {
+  --tw-text-opacity: 1;
+  color: rgb(185 28 28 / var(--tw-text-opacity));
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
