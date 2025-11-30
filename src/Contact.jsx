@@ -31,18 +31,14 @@ export default function Contact() {
   };
   const handleNameChange = (e) => {
     setContactData({ ...contactData, name: e.target.value });
-    // setError({ ...error, name: false });
   };
   const handleMailChange = (e) => {
     setContactData({ ...contactData, mail: e.target.value });
-    // setError({ ...error, mail: false });
   };
   const handleContentChange = (e) => {
     setContactData({ ...contactData, content: e.target.value });
-    // setError({ ...error, content: false });
   };
-  //　メモ　handle系の関数が動いていない、更新されない
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     let hasError = false;
     e.preventDefault();
     if (contactData.name.length > 30) {
@@ -80,10 +76,12 @@ export default function Contact() {
       setError((prev) => ({ ...prev, content: false }));
     }
 
-    if (!hasError) {
-      setIsSubmitting(true);
-      //API
-      fetch(
+    if (hasError) return;
+
+    setIsSubmitting(true);
+    //API
+    try {
+      await fetch(
         "https://1hmfpsvto6.execute-api.ap-northeast-1.amazonaws.com/dev/contacts",
         {
           method: "POST",
@@ -94,14 +92,13 @@ export default function Contact() {
             message: contactData.content,
           }),
         }
-      )
-        .then(() => {
-          alert("送信しました");
-          handleClear();
-        })
-        .finally(() => {
-          setIsSubmitting(false);
-        });
+      );
+      alert("送信しました");
+      handleClear();
+    } catch (e) {
+      alert("失敗しました");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -173,6 +170,7 @@ export default function Contact() {
           <div className={styles.contactButtonWrapper}>
             <button
               type="submit"
+              disabled={isSubmitting}
               className={`${styles.contactButton} ${styles.contactButtonSubmit}`}
             >
               送信
@@ -180,6 +178,7 @@ export default function Contact() {
             <button
               type="button"
               onClick={handleClear}
+              disabled={isSubmitting}
               className={`${styles.contactButton} ${styles.contactButtonClear}`}
             >
               クリア
